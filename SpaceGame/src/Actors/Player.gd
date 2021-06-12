@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("fly"):
 		direction = (mousepoint - self_position).normalized()
 	move_and_slide(direction * move_speed * delta)
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 
 
