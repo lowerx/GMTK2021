@@ -4,74 +4,45 @@ signal update
 
 
 var planets = []
-var movements = []
+
+
+func set_sun(object, area):
+	planets.append({"type": "sun", "object": object, "area": area})
+	get_update(object)
 
 
 func set_gravity(object, area):
-	planets.append({"object": object, "area": area})
-	_set_event()
-	return get_update(object)
+	planets.append({"type": "planet", "object": object, "area": area})
+	get_update(object)
 
 
 func get_update(object):
-	for item in range(0, movements.size()):
-		if object == movements[item]["object"]:
-			var movement = movements[item]["movement"]
-			movements.remove(item)
-			return movement
+	_update_objects_positions()
+	var index = _get_object_index(object)
+	return _set_movement(index)
 
 
-func _set_event():
-	var objects_positions = []
-	for item in planets:
-		objects_positions.append(
-			{
-				"object": item["object"], 
-				"position": _get_objects_position(item["object"]),
-				"area": item["area"]
-			}
-		)
-	for item in planets:
+func _get_object_index(object):
+	for index in range(0, planets.size()):
+		if planets[index]["object"] == object:
+			return index
+
+
+func _set_movement(index):
+	var movement = {}
+	if planets[index]["type"] != "sun":
 		var positions = []
-		var self_position
-		var self_area
-		for object in range(0, objects_positions.size()):
-			if objects_positions[object]["object"] == item["object"]:
-				self_position = objects_positions[object]["position"]
-				self_area = objects_positions[object]["area"]
-			else:
-				positions.append(objects_positions[object])
+		var self_position = planets[index]["position"]
+		var self_area = planets[index]["area"]
+		for object in range(0, planets.size()):
+			if object != index:
+				if planets[object]["area"] > self_area:
+					positions.append(planets[object])
 		
 		var other_positions = []
 		for object in range(0, round(float(positions.size()) / 2)):
-			if positions[object]["object"] == item["object"]:
-				self_position = positions[object]["position"]
-				self_area = positions[object]["area"]
-			else:
-				if positions[object]["object"] == positions[positions.size() - 1]["object"]:
-					if float(positions.size() % 2) != 0:
-						other_positions.append({
-							"vector": [
-								positions[object]["position"],
-								positions[positions.size() - 1 - object]["position"]
-							],
-							"areas": [
-								positions[object]["area"],
-								positions[positions.size() - 1 - object]["area"]
-							]
-						})
-					else:
-						other_positions.append({
-							"vector": [
-								positions[object]["position"],
-								positions[object - 1]["position"]
-							],
-							"areas": [
-								positions[object]["area"],
-								positions[object - 1]["area"]
-							]
-						})
-				else:
+			if positions[object]["object"] == positions[positions.size() - 1]["object"]:
+				if float(positions.size() % 2) != 0:
 					other_positions.append({
 						"vector": [
 							positions[object]["position"],
@@ -82,12 +53,34 @@ func _set_event():
 							positions[positions.size() - 1 - object]["area"]
 						]
 					})
+				else:
+					other_positions.append({
+						"vector": [
+							positions[object]["position"],
+							positions[object - 1]["position"]
+						],
+						"areas": [
+							positions[object]["area"],
+							positions[object - 1]["area"]
+						]
+					})
+			else:
+				other_positions.append({
+					"vector": [
+						positions[object]["position"],
+						positions[positions.size() - 1 - object]["position"]
+					],
+					"areas": [
+						positions[object]["area"],
+						positions[positions.size() - 1 - object]["area"]
+					]
+				})
 		while true:
 			var result_array = []
 			var saver = []
 			for object in other_positions:
 				if saver != []:
-					var saver2 = _get_movement(self_position, object["vector"][0], object["vector"][1], self_area, object["areas"][0], object["areas"][1])
+					var saver2 = _get_movement(self_position, object["vector"][0], object["vector"][1], self_area, object["areas"][0] - self_area, object["areas"][1] - self_area)
 					result_array.append({
 						"vector": [
 							saver[0],
@@ -104,16 +97,12 @@ func _set_event():
 			if result_array.size() > 0:
 				other_positions = result_array
 			else:
-				movements.append({
-					"object": item["object"],
-					"movement": saver[0] if saver.size() > 0 else Vector2.ZERO
-				})
-				break
-	emit_signal("update")
+				return saver[0] if saver.size() > 0 else Vector2.ZERO
 
 
-func _get_objects_position(object):
-	return object.get_position()
+func _update_objects_positions():
+	for item in planets:
+		item["position"] = item["object"].get_position()
 
 
 func _get_movement(self_position, position1, position2, self_area, area1, area2):
@@ -134,7 +123,7 @@ func _get_movement(self_position, position1, position2, self_area, area1, area2)
 	else:
 		area2max = self_area
 		area2min = area2
-	movement.x = position2.x + (position1.x - position2.x) * area1max * area2min * (position1.x - self_position.x) / (area1min * area2max * (position2.x - self_position.x))
-	movement.y = position2.y + (position1.y - position2.y) * area1max * area2min * (position1.y - self_position.y) / (area1min * area2max * (position2.y - self_position.y))
+	movement.x = position2.x + (position1.x - position2.x) * area1max * area2min / (area1min * area2max)
+	movement.y = position2.y + (position1.y - position2.y) * area1max * area2min / (area1min * area2max)
 	var area = area2max * area1min / (area1max * area2min)
 	return [movement, area]
