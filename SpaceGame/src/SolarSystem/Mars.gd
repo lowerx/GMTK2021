@@ -1,15 +1,14 @@
 extends KinematicBody2D
 
 
-export (int) var speed = 200
-export (float) var rotation_speed = 0.5
-
 onready var size = Vector2($coin.texture.get_width(), $coin.texture.get_height())
 onready var area = size.x * size.y
+onready var rotation_speed = 10000 / area
 
 var velocity = Vector2()
-var rotation_dir = 1
+var rotation_dir = -1
 var movement = Vector2.ZERO
+var gravity_index = Vector2(0.5, 0.5)
 
 
 func _ready():
@@ -17,6 +16,7 @@ func _ready():
 
 
 func get_input():
+	movement = AutoLoad.get_update($coin)
 	velocity = movement
 
 

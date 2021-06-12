@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 88.3629
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Sun" type="StaticBody2D"]
 script = ExtResource( 2 )
 
 [node name="coin" type="Sprite" parent="."]
