@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-onready var size = Vector2($mercury.texture.get_size())
+onready var size = Vector2($neptun.texture.get_size())
 onready var area = size.x * size.y
 onready var rotation_speed = 10000 / area
 
@@ -13,12 +13,12 @@ var gravity_index = Vector2(0.5, 0.5)
 
 
 func _ready():
-	movement = AutoLoad.set_gravity($mercury, area)
+	movement = AutoLoad.set_gravity($neptun, area)
 
 
 func get_input():
-	movement = AutoLoad.get_update($mercury)
-	velocity = movement
+	movement = AutoLoad.get_update($neptun)
+	velocity = movement * gravity_index
 
 
 func _physics_process(delta):
