@@ -21,6 +21,7 @@ __meta__ = {
 
 [node name="PauseOverlay" type="ColorRect" parent="."]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.192157 )
