@@ -10,11 +10,11 @@ radius = 324.414
 script = ExtResource( 2 )
 
 [node name="coin" type="Sprite" parent="."]
-position = Vector2( 44.625, 60.625 )
+position = Vector2( 116.625, 132.625 )
 scale = Vector2( 0.075, 0.075 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 44.625, 60.625 )
+position = Vector2( 116.625, 132.625 )
 scale = Vector2( 0.075, 0.075 )
 shape = SubResource( 1 )

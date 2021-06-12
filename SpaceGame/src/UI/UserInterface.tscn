@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/UI/UserInterface.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/UI/PlayButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/MainMenuButton.tscn" type="PackedScene" id=5]
 
 [node name="UserInterface" type="Control"]
 pause_mode = 2
@@ -45,13 +45,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 5 )]
-margin_right = 383.0
-margin_bottom = 65.0
-text = "Main Menu"
+[node name="MainMenuButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 5 )]
 next_scene_path = "res://src/Screens/MainScreen.tscn"
 
 [node name="QuitButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 4 )]
 margin_top = 69.0
 margin_right = 383.0
 margin_bottom = 134.0
+[connection signal="button_up" from="PauseOverlay/PauseMenu/MainMenuButton" to="PauseOverlay/PauseMenu/MainMenuButton" method="_on_button_up"]
