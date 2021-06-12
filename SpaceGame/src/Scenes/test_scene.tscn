@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Scenes/spawn_meteorites.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="Asteroid" parent="." instance=ExtResource( 2 )]
+position = Vector2( 303.77, 195.516 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 688.307, 535.872 )
+
+[connection signal="timeout" from="Timer" to="Asteroid" method="_on_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]
