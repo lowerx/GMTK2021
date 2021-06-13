@@ -14,11 +14,8 @@ func get_margins(_size: Vector2):
 
 func hp_check():
 	if hp <= 0:
-<<<<<<< HEAD
 		AutoLoad.planets.erase(self)
-=======
-		lost_planets += 1 
->>>>>>> e36cbf36b524812d0f9d32c57f805bcaedef6e5d
+		lost_planets += 1
 		queue_free()
 	if lost_planets == 4:
 		get_tree().change_scene("res://src/Screens/FailScreen.tscn")
