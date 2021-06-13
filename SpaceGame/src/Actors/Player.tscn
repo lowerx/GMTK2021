@@ -34,4 +34,13 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2( 1.1, 1.1 )
 shape = SubResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -240.0
+margin_top = 0.000868798
+margin_right = -236.0
+margin_bottom = 14.0009
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

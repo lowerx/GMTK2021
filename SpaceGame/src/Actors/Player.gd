@@ -23,8 +23,14 @@ func get_input():
 
 
 func _physics_process(delta):
+	_hp_check()
 	get_input()
 	velocity = move_and_slide(velocity)
+
+
+func _hp_check():
+	if hp <= 0:
+		queue_free()
 
 
 func _look_at_mouse():
