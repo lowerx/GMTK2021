@@ -10,14 +10,15 @@ func _ready():
 	randomize()
 	var rand_scale = rand_range(0.1, 1.5)
 	$AsteroidSprite.scale = Vector2(rand_scale, rand_scale)
-	$AsteroidArea.scale = Vector2(rand_scale, rand_scale)
+	$AsteroidArea/CollisionShape2D2.scale = Vector2(rand_scale, rand_scale)
 	$CollisionShape2D.scale = Vector2(rand_scale, rand_scale)
-	hp = rand_scale * 50
+	hp = rand_scale * 30
 
 
 func _process(delta):
 	if hp <= 0:
 		queue_free()
+	$Label.text = str(hp)
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -25,6 +26,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	linear_velocity = velocity.rotated(1)
 
 
-func _on_Area2D_body_entered(area):
-	if area.get_name() == "BulletArea":
+func _on_AsteroidArea_body_entered(body):
+	if body.is_in_group("bullets"):
 		hp -= 5
+		body.queue_free()

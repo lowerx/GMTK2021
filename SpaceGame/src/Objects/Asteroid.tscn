@@ -40,6 +40,15 @@ collision_mask = 8
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AsteroidArea"]
 scale = Vector2( 1, 1.28261 )
 shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -24.0
+margin_top = 72.0
+margin_right = 16.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="area_entered" from="AsteroidArea" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="AsteroidArea" to="." method="_on_AsteroidArea_body_entered"]

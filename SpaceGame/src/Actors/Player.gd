@@ -4,8 +4,9 @@ export (int) var speed = 800
 
 
 const bullet_speed = 5000
-const fire_rate = 0.5
+const fire_rate = 0.1
 var fire_time = 0.0
+var hp = 100
 
 var bullet = preload("res://src/Actors/Bullet.tscn")
 
@@ -44,3 +45,10 @@ func shoot():
 
 func get_time():
 	return OS.get_ticks_msec() / 1000
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("asteroids"):
+		hp -= body.hp * 0.5
+		#var velocity = Vector2(rand_range(body.min_speed, body.max_speed), 0)
+		#body.linear_velocity = velocity.rotated(1)
