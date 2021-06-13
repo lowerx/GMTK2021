@@ -13,4 +13,5 @@ func get_margins(_size: Vector2):
 
 func hp_check():
 	if hp <= 0:
+		AutoLoad.planets.erase(self)
 		queue_free()

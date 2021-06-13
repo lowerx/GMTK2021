@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal damaged
+
 export (int) var speed = 800
 
 
@@ -24,6 +26,7 @@ func get_input():
 
 func _physics_process(delta):
 	_hp_check()
+	$Label.text = str(hp) + "/100"
 	get_input()
 	velocity = move_and_slide(velocity)
 
@@ -56,5 +59,4 @@ func get_time():
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("asteroids"):
 		hp -= body.hp * 0.5
-		#var velocity = Vector2(rand_range(body.min_speed, body.max_speed), 0)
-		#body.linear_velocity = velocity.rotated(1)
+		emit_signal("damaged")

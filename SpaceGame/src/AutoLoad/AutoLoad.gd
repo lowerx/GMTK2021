@@ -10,6 +10,11 @@ func get_planet(object):
 	planets.append(object)
 
 
+func _process(delta):
+	if planets.size() < 5:
+		pass
+
+
 #func set_sun(object, area):
 #	planets.append({"type": "sun", "object": object, "area": area})
 #	get_update(object)
