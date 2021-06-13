@@ -80,6 +80,13 @@ move_right={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="planets"
+2d_physics/layer_3="asteroids"
+2d_physics/layer_4="bullets"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

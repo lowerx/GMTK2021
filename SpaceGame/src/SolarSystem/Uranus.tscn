@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/game files/planets/uranus.png" type="Texture" id=1]
 [ext_resource path="res://src/SolarSystem/Uranus.gd" type="Script" id=2]
@@ -6,7 +6,12 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 424.075
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 41.979
+
 [node name="Uranus" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="uranus" type="Sprite" parent="."]
@@ -28,3 +33,14 @@ rect_scale = Vector2( 2.50258, 2.17305 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color( 0.568627, 0.164706, 0.164706, 1 )
+position = Vector2( 1048, 632 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 1.90572, 1.97724 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_planet_body_entered"]

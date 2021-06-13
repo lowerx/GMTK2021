@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export var min_speed = 150.0
+export var min_speed = 200.0
 export var max_speed = 250.0
 
 var hp
@@ -8,9 +8,11 @@ var hp
 
 func _ready():
 	randomize()
-	hp = rand_range(5, 30)
 	var rand_scale = rand_range(0.1, 1.5)
 	$AsteroidSprite.scale = Vector2(rand_scale, rand_scale)
+	$AsteroidArea.scale = Vector2(rand_scale, rand_scale)
+	$CollisionShape2D.scale = Vector2(rand_scale, rand_scale)
+	hp = rand_scale * 50
 
 
 func _process(delta):
@@ -23,6 +25,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 	linear_velocity = velocity.rotated(1)
 
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_body_entered(area):
 	if area.get_name() == "BulletArea":
 		hp -= 5

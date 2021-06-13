@@ -36,7 +36,7 @@ func shoot():
 		return
 	fire_time = get_time()
 	var bul = bullet.instance()
-	bul.rotation_degrees = rotation_degrees
+	bul.rotation_degrees = rotation_degrees + 90
 	bul.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
 	get_tree().get_root().add_child(bul)
 	bul.global_position = $FirePoint.global_position

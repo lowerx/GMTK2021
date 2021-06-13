@@ -14,7 +14,7 @@ radius = 13.9535
 "asteroids",
 ]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource( 2 )
 
@@ -29,16 +29,17 @@ shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AsteroidArea" type="Area2D" parent="." groups=[
+"asteroids",
+]]
 modulate = Color( 0.564706, 0.87451, 0.439216, 1 )
 scale = Vector2( 5.16, 3.68 )
 collision_layer = 4
-collision_mask = 11
+collision_mask = 8
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AsteroidArea"]
 scale = Vector2( 1, 1.28261 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="AsteroidArea" to="." method="_on_Area2D_area_entered"]
