@@ -13,15 +13,16 @@ var gravity_index = Vector2(0.5, 0.5)
 
 
 func _ready():
-	movement = AutoLoad.set_gravity($saturnik, area)
+	$Label.text = "Area: " + str(area) + ", Size: " + str(size) + ", Rotation Speed: " + str(rotation_speed)
+	#movement = AutoLoad.set_gravity($saturnik, area)
 
 
-func get_input():
-	movement = AutoLoad.get_update($saturnik)
-	velocity = movement * gravity_index
+#func get_input():
+	#movement = AutoLoad.get_update($saturnik)
+	#velocity = movement * gravity_index
 
 
 func _physics_process(delta):
-	get_input()
+	#get_input()
 	rotation += rotation_dir * rotation_speed * delta
-	velocity = move_and_slide(velocity)
+	#velocity = move_and_slide(velocity)

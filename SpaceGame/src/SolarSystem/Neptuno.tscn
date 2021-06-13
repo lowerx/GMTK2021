@@ -18,3 +18,13 @@ texture = ExtResource( 1 )
 position = Vector2( -1330, 150 )
 scale = Vector2( 0.15, 0.15 )
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -1376.0
+margin_top = 240.0
+margin_right = -1336.0
+margin_bottom = 254.0
+rect_scale = Vector2( 2.50258, 2.17305 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

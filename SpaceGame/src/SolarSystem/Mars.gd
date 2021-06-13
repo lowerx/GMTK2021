@@ -13,15 +13,16 @@ var gravity_index = Vector2(0.5, 0.5)
 
 
 func _ready():
-	movement = AutoLoad.set_gravity($mars, area)
+	$Label.text = "Area: " + str(area) + ", Size: " + str(size) + ", Rotation Speed: " + str(rotation_speed)
+	#movement = AutoLoad.set_gravity($mars, area)
 
 
-func get_input():
-	movement = AutoLoad.get_update($mars)
-	velocity = movement
+#func get_input():
+	#movement = AutoLoad.get_update($mars)
+	#velocity = movement * gravity_index
 
 
 func _physics_process(delta):
-	get_input()
+	#get_input()
 	rotation += rotation_dir * rotation_speed * delta
-	velocity = move_and_slide(velocity)
+	#velocity = move_and_slide(velocity)

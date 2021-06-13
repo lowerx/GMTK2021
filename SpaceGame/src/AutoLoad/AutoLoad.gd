@@ -80,7 +80,7 @@ func _set_movement(index):
 			var saver = []
 			for object in other_positions:
 				if saver != []:
-					var saver2 = _get_movement(self_position, object["vector"][0], object["vector"][1], self_area, object["areas"][0] - self_area, object["areas"][1] - self_area)
+					var saver2 = _get_movement(self_position, object["vector"][0], object["vector"][1], self_area, object["areas"][0], object["areas"][1])
 					result_array.append({
 						"vector": [
 							saver[0],
@@ -117,13 +117,15 @@ func _get_movement(self_position, position1, position2, self_area, area1, area2)
 	else:
 		area1max = self_area
 		area1min = area1
+	var v_first = (area1max - area1min) / sqrt((position1.x - self_position.x) * (position1.x - self_position.x) + (position1.y - self_position.y) * (position1.y - self_position.y))
 	if area2 > self_area:
 		area2max = area2
 		area2min = self_area
 	else:
 		area2max = self_area
 		area2min = area2
-	movement.x = position2.x + (position1.x - position2.x) * area1max * area2min / (area1min * area2max)
-	movement.y = position2.y + (position1.y - position2.y) * area1max * area2min / (area1min * area2max)
+	var v_second = (area2max - area2min) / sqrt((position2.x - self_position.x) * (position2.x - self_position.x) + (position2.y - self_position.y) * (position2.y - self_position.y))
+	movement.x = position2.x + (position1.x - position2.x) * v_second / v_first
+	movement.y = position2.y + (position1.y - position2.y) * v_second / v_first
 	var area = area2max * area1min / (area1max * area2min)
 	return [movement, area]
