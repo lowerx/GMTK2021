@@ -12,10 +12,8 @@
 [ext_resource path="res://src/AutoLoad/AutoLoad.tscn" type="PackedScene" id=11]
 
 [node name="SolarSystem" type="Node2D"]
-position = Vector2( 1953.54, 1428.63 )
 
 [node name="Sun" parent="." instance=ExtResource( 5 )]
-scale = Vector2( 6, 6 )
 collision_layer = 2
 collision_mask = 4
 
@@ -24,41 +22,25 @@ collision_mask = 4
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Uranus" parent="Planets" instance=ExtResource( 2 )]
-position = Vector2( 3372.17, 6344.54 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Saturn" parent="Planets" instance=ExtResource( 1 )]
-position = Vector2( 6285.42, 7866.8 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Neptuno" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 9512.97, 6703.13 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Mercury" parent="Planets" instance=ExtResource( 3 )]
-position = Vector2( 972.385, 1554.49 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Mars" parent="Planets" instance=ExtResource( 7 )]
-position = Vector2( 1737.96, 2729.27 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Jupiter" parent="Planets" instance=ExtResource( 9 )]
-position = Vector2( 2307.78, 3232.1 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Earth" parent="Planets" instance=ExtResource( 6 )]
-position = Vector2( 1363.2, 2063.13 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
 
 [node name="Venus" parent="Planets" instance=ExtResource( 8 )]
-position = Vector2( 912.708, 1516.7 )
-scale = Vector2( 3, 3 )
 collision_mask = 4
