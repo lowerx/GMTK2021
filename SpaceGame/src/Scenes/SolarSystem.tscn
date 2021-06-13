@@ -13,40 +13,42 @@
 
 [node name="SolarSystem" type="Node2D"]
 
-[node name="Uranus" parent="." instance=ExtResource( 2 )]
-collision_layer = 2
-collision_mask = 4
-
 [node name="Sun" parent="." instance=ExtResource( 5 )]
 collision_layer = 2
 collision_mask = 4
 
-[node name="Saturn" parent="." instance=ExtResource( 1 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Neptuno" parent="." instance=ExtResource( 4 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Mercury" parent="." instance=ExtResource( 3 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Mars" parent="." instance=ExtResource( 7 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Jupiter" parent="." instance=ExtResource( 9 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Earth" parent="." instance=ExtResource( 6 )]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Venus" parent="." instance=ExtResource( 8 )]
-collision_layer = 2
-collision_mask = 4
-
 [node name="AutoLoad" parent="." instance=ExtResource( 11 )]
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Uranus" parent="Planets" instance=ExtResource( 2 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Saturn" parent="Planets" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Neptuno" parent="Planets" instance=ExtResource( 4 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Mercury" parent="Planets" instance=ExtResource( 3 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Mars" parent="Planets" instance=ExtResource( 7 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Jupiter" parent="Planets" instance=ExtResource( 9 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Earth" parent="Planets" instance=ExtResource( 6 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Venus" parent="Planets" instance=ExtResource( 8 )]
+collision_layer = 2
+collision_mask = 4
