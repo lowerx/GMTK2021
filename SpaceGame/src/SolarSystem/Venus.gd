@@ -6,11 +6,10 @@ onready var size = Vector2($venus.texture.get_size())
 func _ready():
 	get_margins(size)
 	AutoLoad.get_planet($venus)
-	$Label.text = "Hp:" + str(hp) + "Rotation Speed: " + str(rotation_speed)
 
 
 func _physics_process(delta):
-	$Label.text = "Hp:" + str(hp) + "Rotation Speed: " + str(rotation_speed)
+	$Label.text = "Hp:" + str(hp)
 	hp_check()
 	rotation += rotation_dir * rotation_speed * delta
 
