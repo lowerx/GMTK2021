@@ -5,6 +5,7 @@ onready var size = Vector2($neptun.texture.get_size())
 
 func _ready():
 	get_margins(size)
+	AutoLoad.get_planet($neptun)
 	$Label.text = "Hp:" + str(hp) + "Rotation Speed: " + str(rotation_speed)
 
 

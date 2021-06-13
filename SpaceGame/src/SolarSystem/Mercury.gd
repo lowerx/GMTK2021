@@ -5,6 +5,7 @@ onready var size = Vector2($mercury.texture.get_size())
 
 func _ready():
 	get_margins(size)
+	AutoLoad.get_planet($mercury)
 	$Label.text = "Hp:" + str(hp) + "Rotation Speed: " + str(rotation_speed)
 
 

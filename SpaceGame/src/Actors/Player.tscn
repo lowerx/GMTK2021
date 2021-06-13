@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/game files/spacesheep/sheep.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/Actors/ProgressBar.gd" type="Script" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -250, 175, 0, 175, 150, -175, 150, -175, 0 )
@@ -9,7 +10,8 @@ points = PoolVector2Array( 0, -250, 175, 0, 175, 150, -175, 150, -175, 0 )
 [node name="Player" type="KinematicBody2D"]
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
-collision_mask = 2
+collision_layer = 16
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="PlayerModel" type="Sprite" parent="."]
@@ -19,7 +21,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="FirePoint" type="Node2D" parent="."]
-position = Vector2( -8.88708, -272.142 )
+position = Vector2( 0, -272.142 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -40,6 +42,7 @@ margin_left = -240.0
 margin_top = 0.000868798
 margin_right = -236.0
 margin_bottom = 14.0009
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

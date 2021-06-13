@@ -5,6 +5,7 @@ onready var size = Vector2($uranus.texture.get_size())
 
 func _ready():
 	get_margins(size)
+	AutoLoad.get_planet($uranus)
 	$Label.text = "Hp:" + str(hp) + "Rotation Speed: " + str(rotation_speed)
 
 

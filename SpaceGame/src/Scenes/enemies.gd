@@ -25,4 +25,4 @@ func _on_Timer_timeout():
 	enemy.rotation = direction
 	
 	var velocity = Vector2(rand_range(enemy.min_speed, enemy.max_speed), 0)
-	enemy.linear_velocity = velocity.rotated(direction)
+	enemy.move_and_slide(velocity.rotated(direction))
