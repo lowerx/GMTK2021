@@ -45,4 +45,3 @@ __meta__ = {
 [node name="Node" type="Node" parent="."]
 pause_mode = 2
 script = ExtResource( 3 )
-next_scene_path = "res://src/Screens/MainScreen.tscn"
