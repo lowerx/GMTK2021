@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Chill_menu.mp3-be05f19c92f8ee79c30578e7c0b77eb4.mp3str"
+
+[deps]
+
+source_file="res://assets/Chill_menu.mp3"
+dest_files=[ "res://.import/Chill_menu.mp3-be05f19c92f8ee79c30578e7c0b77eb4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

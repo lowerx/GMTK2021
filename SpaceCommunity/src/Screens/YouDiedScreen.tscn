@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/background.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/game files/buttons/mainmenu.png" type="Texture" id=3]
-[ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=4]
+[ext_resource path="res://assets/background/background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/buttons/mainmenu.png" type="Texture" id=3]
+[ext_resource path="res://assets/buttons/exit.png" type="Texture" id=4]
 [ext_resource path="res://assets/PlayButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/QuitButton.tscn" type="PackedScene" id=6]
 
@@ -30,14 +30,12 @@ __meta__ = {
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -570.767
-margin_top = 124.453
-margin_right = -155.767
-margin_bottom = 245.453
+margin_left = -299.161
+margin_top = 302.642
+margin_right = -91.1615
+margin_bottom = 361.642
 rect_scale = Vector2( 2.93371, 2.69359 )
-text = "You couldn't saved
-Solar System!"
-align = 1
+text = "You Died!"
 __meta__ = {
 "_edit_use_anchors_": false
 }

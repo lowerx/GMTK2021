@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Space_Chill.mp3-89dce753691236dd0296f4edd88888be.mp3str"
+
+[deps]
+
+source_file="res://assets/Space_Chill.mp3"
+dest_files=[ "res://.import/Space_Chill.mp3-89dce753691236dd0296f4edd88888be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
