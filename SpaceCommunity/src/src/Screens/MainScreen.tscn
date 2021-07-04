@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/UI/QuitButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/game files/logo.png" type="Texture" id=4]
+[ext_resource path="res://src/UI/PlayButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=7]
+[ext_resource path="res://assets/game files/buttons/play.png" type="Texture" id=8]
+
+[node name="MainScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.00373, 1 )
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.346777, 0.197279 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -161.308
+margin_top = -3.99997
+margin_right = 180.693
+margin_bottom = 361.0
+rect_scale = Vector2( 1, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="Menu" instance=ExtResource( 5 )]
+margin_right = 342.0
+margin_bottom = 176.0
+text = ""
+icon = ExtResource( 8 )
+next_scene_path = "res://src/Scenes/Main.tscn"
+
+[node name="QuitButton" parent="Menu" instance=ExtResource( 1 )]
+margin_top = 180.0
+margin_right = 342.0
+margin_bottom = 356.0
+text = ""
+icon = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -177.249
+margin_top = -72.0
+margin_right = 802.751
+margin_bottom = 908.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

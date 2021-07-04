@@ -21,10 +21,10 @@ pause_mode = 2
 position = Vector2( -1280, -592 )
 
 [node name="Camera2D" parent="Player" index="3"]
-limit_left = -5000
-limit_top = -5000
-limit_right = 5300
-limit_bottom = 5100
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
 
 [node name="SolarSystem" parent="." instance=ExtResource( 1 )]
 
@@ -51,6 +51,6 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [node name="Borders" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1919.73, -1145.57 )
+position = Vector2( -1920, -1120 )
 
 [editable path="Player"]

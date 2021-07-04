@@ -9,12 +9,13 @@
 [ext_resource path="res://src/SolarSystem/Mars.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/SolarSystem/Venus.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/SolarSystem/Jupiter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/sunlight.png" type="Texture" id=10]
+[ext_resource path="res://assets/game files/sunlight.png" type="Texture" id=10]
 [ext_resource path="res://src/AutoLoad/AutoLoad.tscn" type="PackedScene" id=11]
 
 [node name="SolarSystem" type="Node2D"]
 
 [node name="Sun" parent="." instance=ExtResource( 5 )]
+collision_layer = 2
 collision_mask = 4
 
 [node name="Light2D" type="Light2D" parent="Sun"]

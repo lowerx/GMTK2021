@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/background.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/buttons/mainmenu.png" type="Texture" id=3]
-[ext_resource path="res://assets/buttons/exit.png" type="Texture" id=4]
-[ext_resource path="res://assets/PlayButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/QuitButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/background/background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/game files/buttons/mainmenu.png" type="Texture" id=3]
+[ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=4]
+[ext_resource path="res://assets/assets/PlayButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/assets/QuitButton.tscn" type="PackedScene" id=6]
 
 [node name="YouDiedScreen" type="Control"]
 anchor_right = 1.0

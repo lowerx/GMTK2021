@@ -1,22 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/UI/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/background.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/logo.png" type="Texture" id=4]
+[ext_resource path="res://assets/game files/logo.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/PlayButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/Screens/MainScreen.gd" type="Script" id=6]
-[ext_resource path="res://assets/buttons/exit.png" type="Texture" id=7]
-[ext_resource path="res://assets/buttons/play.png" type="Texture" id=8]
-[ext_resource path="res://assets/Space_Chill.mp3" type="AudioStream" id=9]
-[ext_resource path="res://src/Screens/AudioStreamPlayer.gd" type="Script" id=10]
+[ext_resource path="res://assets/Chill_menu.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=7]
+[ext_resource path="res://assets/game files/buttons/play.png" type="Texture" id=8]
+[ext_resource path="res://src/Screens/MainScreen.gd" type="Script" id=9]
 
 [node name="MainScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 1.21677, 1.10589 )
 theme = ExtResource( 3 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,9 +26,6 @@ layer = -100
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 5.03967
-margin_right = 3600.0
-margin_bottom = 4105.04
 rect_scale = Vector2( 0.346777, 0.197279 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -56,7 +52,6 @@ margin_bottom = 176.0
 toggle_mode = true
 text = ""
 icon = ExtResource( 8 )
-flat = true
 next_scene_path = "res://src/Scenes/Main.tscn"
 
 [node name="QuitButton" parent="Menu" instance=ExtResource( 1 )]
@@ -65,7 +60,6 @@ margin_right = 342.0
 margin_bottom = 356.0
 text = ""
 icon = ExtResource( 7 )
-flat = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -81,7 +75,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = 5.048
+stream = ExtResource( 6 )
 autoplay = true
-script = ExtResource( 10 )
+
+[connection signal="pressed" from="Menu/PlayButton" to="Menu/PlayButton" method="_on_pressed"]
