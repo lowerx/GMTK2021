@@ -10,9 +10,9 @@ export var min_speed = 150.0
 export var max_speed = 250.0
 
 var hp
-var goal
+var planets = AutoLoad.planets
+var goal = planets[rand_range(0, planets.size() - 1)] if planets.size() > 0 else null
 var velocity = Vector2()
-var planets
 
 
 func _ready():
@@ -20,15 +20,18 @@ func _ready():
 	planets = AutoLoad.planets
 	if planets.size() > 0:
 		goal = planets[rand_range(0, planets.size() - 1)]
+		look_at(goal.get_position())
 		velocity = goal.get_position() - get_position()
 		velocity = velocity.normalized()
 	hp = rand_range(5, 30)
 
 
 func _process(delta):
+	planets = AutoLoad.planets
 	if goal == null:
 		if planets.size() > 0:
 			goal = planets[rand_range(0, planets.size() - 1)]
+			look_at(goal.get_position())
 			velocity = goal.get_position() - get_position()
 			velocity = velocity.normalized()
 	$EnemySprite.rotation_degrees = 90

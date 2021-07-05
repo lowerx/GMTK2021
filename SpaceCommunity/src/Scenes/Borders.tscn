@@ -5,6 +5,7 @@
 [node name="Borders" type="Node2D"]
 
 [node name="TopBorder" type="Node2D" parent="."]
+position = Vector2( 367.223, 698.062 )
 
 [node name="wall42" parent="TopBorder" instance=ExtResource( 1 )]
 position = Vector2( 200, -1200 )
@@ -103,7 +104,7 @@ position = Vector2( 930, -1600 )
 rotation = 0.10472
 
 [node name="BottomBorder" type="Node2D" parent="."]
-position = Vector2( 0, 10000 )
+position = Vector2( 367.223, 10698.1 )
 
 [node name="wall42" parent="BottomBorder" instance=ExtResource( 1 )]
 position = Vector2( 200, -1200 )
@@ -202,7 +203,7 @@ position = Vector2( 930, -1600 )
 rotation = 0.10472
 
 [node name="LeftBorder" type="Node2D" parent="."]
-position = Vector2( 100, 0 )
+position = Vector2( 467.223, 698.062 )
 
 [node name="wall" parent="LeftBorder" instance=ExtResource( 1 )]
 position = Vector2( -750, 4150 )
@@ -301,7 +302,7 @@ position = Vector2( -1140, 500 )
 rotation = 1.71042
 
 [node name="RightBorder" type="Node2D" parent="."]
-position = Vector2( 10300, -50 )
+position = Vector2( 10667.2, 648.062 )
 
 [node name="wall" parent="RightBorder" instance=ExtResource( 1 )]
 position = Vector2( -750, 4150 )
@@ -400,6 +401,7 @@ position = Vector2( -1140, 500 )
 rotation = 1.71042
 
 [node name="LeftTopCorner" type="Node2D" parent="."]
+position = Vector2( 367.223, 698.062 )
 
 [node name="wall41" parent="LeftTopCorner" instance=ExtResource( 1 )]
 position = Vector2( -490, -800 )
@@ -414,7 +416,7 @@ position = Vector2( -950, -880 )
 rotation = 2.44346
 
 [node name="LeftBottomCorner" type="Node2D" parent="."]
-position = Vector2( 400, 7900 )
+position = Vector2( 767.223, 8598.06 )
 rotation = 4.71239
 
 [node name="wall41" parent="LeftBottomCorner" instance=ExtResource( 1 )]
@@ -430,7 +432,7 @@ position = Vector2( -950, -880 )
 rotation = 2.44346
 
 [node name="RightBottomCorner" type="Node2D" parent="."]
-position = Vector2( 8400, 7500 )
+position = Vector2( 8767.22, 8198.06 )
 rotation = 3.14159
 
 [node name="wall41" parent="RightBottomCorner" instance=ExtResource( 1 )]
@@ -446,7 +448,7 @@ position = Vector2( -950, -880 )
 rotation = 2.44346
 
 [node name="RightTopCorner" type="Node2D" parent="."]
-position = Vector2( 8000, -500 )
+position = Vector2( 8367.22, 198.062 )
 rotation = 1.5708
 
 [node name="wall41" parent="RightTopCorner" instance=ExtResource( 1 )]

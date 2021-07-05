@@ -19,7 +19,11 @@ func get_input():
 	_look_at_mouse()
 	velocity = Vector2()
 	if Input.is_action_pressed("fly"):
+		$PlayerModel.play("fly")
 		velocity = Vector2(speed, 0).rotated(rotation)
+	else:
+		$PlayerModel.stop()
+		$PlayerModel.play("stay")
 	if Input.is_action_pressed("shoot"):
 		shoot()
 

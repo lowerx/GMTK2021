@@ -9,7 +9,9 @@ radius = 424.075
 [sub_resource type="CircleShape2D" id=2]
 radius = 41.979
 
-[node name="Uranus" type="KinematicBody2D"]
+[node name="Uranus" type="KinematicBody2D" groups=[
+"planets",
+]]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource( 2 )
@@ -34,7 +36,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"planets",
+]]
 modulate = Color( 0.568627, 0.164706, 0.164706, 1 )
 position = Vector2( 1048, 632 )
 collision_layer = 2

@@ -27,6 +27,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_AsteroidArea_body_entered(body):
-	if body.is_in_group("bullets"):
+	if body.is_in_group("bullets") or body.is_in_group("enemybullets"):
 		hp -= 15
 		body.queue_free()
