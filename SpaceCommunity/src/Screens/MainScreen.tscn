@@ -9,11 +9,13 @@
 [ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=7]
 [ext_resource path="res://assets/game files/buttons/play.png" type="Texture" id=8]
 [ext_resource path="res://src/Screens/MainScreen.gd" type="Script" id=9]
-[ext_resource path="res://src/Scenes/Asteroids.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Scenes/MenuAsteroids.tscn" type="PackedScene" id=11]
 
 [node name="MainScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -327.0
+margin_bottom = -76.0
 rect_scale = Vector2( 1.21677, 1.10589 )
 theme = ExtResource( 3 )
 script = ExtResource( 9 )
@@ -27,7 +29,6 @@ layer = -100
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 0.346777, 0.197279 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -38,9 +39,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -296.182
+margin_left = -175.684
 margin_top = -23.8325
-margin_right = 45.8193
+margin_right = 166.317
 margin_bottom = 341.168
 rect_scale = Vector2( 1, 0.8 )
 __meta__ = {
@@ -65,18 +66,17 @@ icon = ExtResource( 7 )
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -322.481
-margin_top = 7.23399
-margin_right = 657.519
-margin_bottom = 987.234
+margin_left = -199.987
+margin_right = 780.013
+margin_bottom = 980.0
 rect_scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Asteroids" parent="." instance=ExtResource( 10 )]
-show_behind_parent = true
+[node name="MenuAsteroids" parent="." instance=ExtResource( 11 )]
+process_priority = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

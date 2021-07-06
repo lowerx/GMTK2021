@@ -9,3 +9,7 @@ func _unhandled_input(event):
 
 func _get_configuration_warning() -> String:
 	return "next_scene path must not be empty!" if next_scene_path == "" else ""
+
+
+func _on_Button_pressed():
+	get_tree().change_scene(next_scene_path)

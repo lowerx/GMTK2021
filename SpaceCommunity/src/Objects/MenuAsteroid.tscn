@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Objects/MenuAsteroid.gd" type="Script" id=2]
+[ext_resource path="res://assets/asteroid.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 92.9701
+height = 52.2021
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.9535
+
+[node name="MenuAsteroid" type="RigidBody2D" groups=[
+"menu_asteroids",
+]]
+collision_layer = 4
+collision_mask = 7
+gravity_scale = 0.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -201.447, 132.709, 121.482 ],
+"_edit_vertical_guides_": [ 135.907, 127.982, -317.779 ]
+}
+
+[node name="MenuAsteroidSprite" type="Button" parent="."]
+process_priority = 1
+use_parent_material = true
+margin_left = -128.5
+margin_top = -126.0
+margin_right = 383.5
+margin_bottom = 380.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 3 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="MenuAsteroidArea" type="Area2D" parent="." groups=[
+"asteroids",
+]]
+modulate = Color( 0.564706, 0.87451, 0.439216, 1 )
+scale = Vector2( 5.16, 3.68 )
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MenuAsteroidArea"]
+scale = Vector2( 1, 1.28261 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
+[connection signal="pressed" from="MenuAsteroidSprite" to="." method="_on_MenuAsteroidSprite_pressed"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="mouse_entered" from="MenuAsteroidArea" to="." method="_on_MenuAsteroidArea_mouse_entered"]

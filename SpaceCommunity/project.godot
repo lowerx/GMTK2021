@@ -16,6 +16,7 @@ _global_script_class_icons={
 
 config/name="Space Community"
 run/main_scene="res://src/Screens/CompanyLogo.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
