@@ -2,17 +2,47 @@ extends Node
 
 signal update
 
+var start = true
+var coins = 1000
+var development_index = 0
 
+var resources = {}
 var planets = []
+var prepare_colonies = []
+
+
+func _process(delta):
+	if planets.size() < 5 and not start:
+		get_tree().paused = true
+		get_tree().change_scene("res://src/UI/FailScreen.tscn")
+	elif planets.size() == 8 and start:
+		start = false
+	coins += 0.01
 
 
 func get_planet(object):
 	planets.append(object)
 
 
-func _process(delta):
-	if planets.size() < 5:
-		pass
+func reset_values():
+	planets = []
+	prepare_colonies = []
+	coins = 1000
+	resources = {}
+
+
+func get_colony():
+	var colony = prepare_colonies[0]
+	prepare_colonies.remove(0)
+	return colony
+
+
+func prepare_colony(cost, goal_position):
+	if cost <= coins:
+		var colony = {
+			"hp": round(cost / 1000),
+			"goal_position": goal_position
+		}
 
 
 #func set_sun(object, area):

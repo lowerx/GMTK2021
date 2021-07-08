@@ -8,14 +8,7 @@
 [ext_resource path="res://assets/spacesheep/sheep animation/3a.png" type="Texture" id=6]
 [ext_resource path="res://assets/spacesheep/sheep animation/1a.png" type="Texture" id=7]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 0, -250, 175, 0, 175, 150, -175, 150, -175, 0 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 76
-font_data = ExtResource( 3 )
-
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
@@ -28,6 +21,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, -250, 175, 0, 175, 150, -175, 150, -175, 0 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 76
+font_data = ExtResource( 3 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -37,8 +37,12 @@ collision_layer = 16
 collision_mask = 7
 script = ExtResource( 2 )
 
+[node name="PlayerModel" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "stay"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="FirePoint" type="Node2D" parent="."]
 position = Vector2( 0, -272.142 )
@@ -57,7 +61,7 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2( 1.1, 1.1 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -200.0
@@ -65,15 +69,11 @@ margin_top = -479.0
 margin_right = 206.0
 margin_bottom = -281.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="PlayerModel" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-animation = "stay"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

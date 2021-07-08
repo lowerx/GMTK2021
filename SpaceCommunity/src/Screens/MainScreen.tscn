@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Scenes/MenuAsteroids.tscn" type="PackedScene" id=11]
 
 [node name="MainScreen" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -327.0
@@ -83,3 +84,5 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [connection signal="pressed" from="Menu/PlayButton" to="Menu/PlayButton" method="_on_pressed"]
+
+[editable path="Menu/PlayButton"]

@@ -38,7 +38,8 @@ func _physics_process(delta):
 func _hp_check():
 	if hp <= 0:
 		queue_free()
-		get_tree().change_scene("res://src/Screens/YouDiedScreen.tscn")
+		get_tree().paused = true
+		get_tree().change_scene("res://src/UI/YouDiedScreen.tscn")
 
 
 func _look_at_mouse():
