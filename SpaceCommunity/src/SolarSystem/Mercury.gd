@@ -5,7 +5,7 @@ onready var size = Vector2($mercury.texture.get_size())
 
 func _ready():
 	get_margins(size)
-	AutoLoad.get_planet($mercury)
+	AutoLoad.get_planet({"name": "Mercury", "object": $mercury})
 
 
 func _physics_process(delta):

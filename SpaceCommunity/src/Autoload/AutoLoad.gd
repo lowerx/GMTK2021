@@ -2,13 +2,24 @@ extends Node
 
 signal update
 
+export(int) var coins_per_fr: = 0.01
+
 var start = true
+var _game_scene = false
 var coins = 1000
 var development_index = 0
+
+var colony = preload("res://src/Actors/Colony.tscn")
 
 var resources = {}
 var planets = []
 var prepare_colonies = []
+# o_w_r - objects with resources
+var o_w_r = []
+
+
+func _ready():
+	randomize()
 
 
 func _process(delta):
@@ -17,7 +28,26 @@ func _process(delta):
 		get_tree().change_scene("res://src/UI/FailScreen.tscn")
 	elif planets.size() == 8 and start:
 		start = false
-	coins += 0.01
+	if _game_scene:
+		if coins >= 100:
+			coins -= 100
+			prepare_colonies.append({
+				"hp": 100, 
+				"goal_position": _get_random_position()
+			})
+			var r_colony = colony.instance()
+			get_tree().get_root().add_child(r_colony)
+			for planet in planets:
+				if planet["name"] == 'Earth':
+					r_colony.global_position = planet["object"].global_position
+		coins += coins_per_fr
+
+
+func game_scene():
+	_game_scene = true
+
+func not_game_scene():
+	_game_scene = false
 
 
 func get_planet(object):
@@ -25,6 +55,7 @@ func get_planet(object):
 
 
 func reset_values():
+	not_game_scene()
 	planets = []
 	prepare_colonies = []
 	coins = 1000
@@ -33,7 +64,7 @@ func reset_values():
 
 func get_colony():
 	var colony = prepare_colonies[0]
-	prepare_colonies.remove(0)
+	prepare_colonies.erase(colony)
 	return colony
 
 
@@ -43,6 +74,13 @@ func prepare_colony(cost, goal_position):
 			"hp": round(cost / 1000),
 			"goal_position": goal_position
 		}
+
+
+func _get_random_position():
+	return Vector2(
+		round(rand_range(0, 0.800) * 100), 
+		round(rand_range(0, 0.800) * 100)
+	)
 
 
 #func set_sun(object, area):

@@ -2,5 +2,6 @@
 
 [ext_resource path="res://src/Autoload/AutoLoad.gd" type="Script" id=1]
 
-[node name="AutoLoad" type="Node2D"]
+[node name="AutoLoad" type="Node"]
 script = ExtResource( 1 )
+coins_per_fr = 1

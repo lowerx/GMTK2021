@@ -5,7 +5,7 @@ onready var size = Vector2($upiter.texture.get_size())
 
 func _ready():
 	get_margins(size)
-	AutoLoad.get_planet($upiter)
+	AutoLoad.get_planet({"name": "Jupiter", "object": $upiter})
 
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Scenes/SolarSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Scenes/Asteroids.tscn" type="PackedScene" id=2]
@@ -9,9 +9,11 @@
 [ext_resource path="res://src/UI/UserInterface.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Scenes/Enemies.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Scenes/Main.gd" type="Script" id=10]
 
 [node name="Main" type="Node2D"]
 position = Vector2( 1920, 1120 )
+script = ExtResource( 10 )
 
 [node name="U&G-Interface" type="CanvasLayer" parent="."]
 pause_mode = 2

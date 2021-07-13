@@ -5,7 +5,7 @@ onready var size = Vector2($saturnik.texture.get_size())
 
 func _ready():
 	get_margins(size)
-	AutoLoad.get_planet($saturnik)
+	AutoLoad.get_planet({"name": "Saturn", "object": $saturnik})
 
 
 func _physics_process(delta):

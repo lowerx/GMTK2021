@@ -11,7 +11,7 @@ export var max_speed = 250.0
 
 var hp
 var planets = AutoLoad.planets
-var goal = planets[rand_range(0, planets.size() - 1)] if planets.size() > 0 else null
+var goal = planets[rand_range(0, planets.size() - 1)]["object"] if planets.size() > 0 else null
 var velocity = Vector2()
 
 
@@ -19,7 +19,7 @@ func _ready():
 	randomize()
 	planets = AutoLoad.planets
 	if planets.size() > 0:
-		goal = planets[rand_range(0, planets.size() - 1)]
+		goal = planets[rand_range(0, planets.size() - 1)]["object"]
 		look_at(goal.get_position())
 		velocity = goal.get_position() - get_position()
 		velocity = velocity.normalized()
