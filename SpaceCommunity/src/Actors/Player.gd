@@ -6,7 +6,7 @@ export (int) var speed = 800
 
 
 const bullet_speed = 5000
-const fire_rate = 0.1
+const fire_rate = 1
 var fire_time = 0.0
 var hp = 100
 
@@ -45,6 +45,11 @@ func _hp_check():
 func _look_at_mouse():
 	look_at(get_global_mouse_position())
 	$PlayerModel.rotation_degrees = 90
+	$FirePoint.position = Vector2(
+		$PlayerModel.position.x + 270,
+		$PlayerModel.position.y
+	)
+	$FirePoint.rotation_degrees = 90
 
 
 func shoot():

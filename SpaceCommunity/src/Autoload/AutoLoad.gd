@@ -54,6 +54,10 @@ func get_planet(object):
 	planets.append(object)
 
 
+func new_o_w_r(object):
+	o_w_r.append(object)
+
+
 func reset_values():
 	not_game_scene()
 	planets = []

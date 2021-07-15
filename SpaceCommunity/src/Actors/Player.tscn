@@ -24,7 +24,7 @@ animations = [ {
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, -250, 175, 0, 175, 150, -175, 150, -175, 0 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 76
 font_data = ExtResource( 3 )
 
@@ -44,7 +44,7 @@ animation = "stay"
 shape = SubResource( 2 )
 
 [node name="FirePoint" type="Node2D" parent="."]
-position = Vector2( 0, -272.142 )
+position = Vector2( 0, -270 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -68,7 +68,7 @@ margin_top = -479.0
 margin_right = 206.0
 margin_bottom = -281.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
 __meta__ = {

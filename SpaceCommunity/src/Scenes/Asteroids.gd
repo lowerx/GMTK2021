@@ -1,7 +1,5 @@
 extends Node2D
 
-const width = 1910
-const height = 1060
 const ASTEROID = preload("res://src/Objects/Asteroid.tscn")
 
 
