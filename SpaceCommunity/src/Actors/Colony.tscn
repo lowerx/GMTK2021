@@ -11,15 +11,13 @@ height = 780.0
 radius = 2817.52
 height = 15988.1
 
-[node name="Colony" type="KinematicBody2D" groups=[
+[node name="Colony" type="RigidBody2D" groups=[
 "colonies",
 ]]
 collision_layer = 16
-collision_mask = 7
+collision_mask = 23
+gravity_scale = 0.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_vertical_guides_": [ -45.9612 ]
-}
 
 [node name="colony" type="Sprite" parent="."]
 position = Vector2( -1, 0 )

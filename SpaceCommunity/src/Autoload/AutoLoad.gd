@@ -30,16 +30,21 @@ func _process(delta):
 		start = false
 	if _game_scene:
 		if coins >= 100:
-			coins -= 100
-			prepare_colonies.append({
-				"hp": 100, 
-				"goal_position": _get_random_position()
-			})
-			var r_colony = colony.instance()
-			get_tree().get_root().add_child(r_colony)
-			for planet in planets:
-				if planet["name"] == 'Earth':
-					r_colony.global_position = planet["object"].global_position
+			for object in o_w_r:
+				if object["status"] == 'available':
+					coins -= 100
+					prepare_colonies.append({
+						"hp": 100, 
+						#"goal_position": object["object"].get_position()
+						"goal_position": Vector2(100, 100)
+					})
+					_occupate_o_w_r(object)
+					var r_colony = colony.instance()
+					get_tree().get_root().add_child(r_colony)
+					#for planet in planets:
+					#	if planet["name"] == 'Earth':
+					#		r_colony.global_position = planet["object"].global_position
+					r_colony.global_position = Vector2(0, 0)
 		coins += coins_per_fr
 
 
@@ -55,7 +60,14 @@ func get_planet(object):
 
 
 func new_o_w_r(object):
-	o_w_r.append(object)
+	var new = {}
+	new["object"] = object
+	new["status"] = 'available'
+	o_w_r.append(new)
+
+
+func _occupate_o_w_r(object):
+	o_w_r.erase(object)
 
 
 func reset_values():
@@ -70,21 +82,6 @@ func get_colony():
 	var colony = prepare_colonies[0]
 	prepare_colonies.erase(colony)
 	return colony
-
-
-func prepare_colony(cost, goal_position):
-	if cost <= coins:
-		var colony = {
-			"hp": round(cost / 1000),
-			"goal_position": goal_position
-		}
-
-
-func _get_random_position():
-	return Vector2(
-		round(rand_range(0, 0.800) * 100), 
-		round(rand_range(0, 0.800) * 100)
-	)
 
 
 #func set_sun(object, area):

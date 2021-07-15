@@ -1,31 +1,33 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 signal damaged
 
-export (int) var speed = 400
+export (int) var speed = 100
 
 var hp: float
 var colony_instance = {}
 var goal_position = Vector2()
-var velocity = Vector2()
+var velocity: Vector2 = Vector2.ZERO
 
 
 func _ready():
 	colony_instance = AutoLoad.get_colony()
 	hp = colony_instance["hp"]
 	goal_position = colony_instance["goal_position"]
-
-
-func get_input():
-	look_at(goal_position)
-	velocity = Vector2(speed, 0)
+	velocity = goal_position
+	self.linear_velocity = velocity
 
 
 func _physics_process(delta):
 	_hp_check()
 	$Label.text = str(hp) + "/100"
-	get_input()
-	velocity = move_and_slide(velocity)
+	_move_to_goal()
+
+
+func _move_to_goal():
+	if goal_position != position:
+		velocity = goal_position
+		self.linear_velocity = velocity
 
 
 func _hp_check():

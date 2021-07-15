@@ -6,8 +6,8 @@ const RESOURCES = [
 		"object": preload("res://src/Objects/Gold.tscn")
 	},
 	{
-		"name": "argentum",
-		"object": preload("res://src/Objects/Argentum.tscn")
+		"name": "silver",
+		"object": preload("res://src/Objects/Silver.tscn")
 	},
 	{
 		"name": "platinum",
@@ -22,9 +22,9 @@ var screen_edges : Array = []
 
 func _ready():
 	randomize()
-	screen_edges.append(Vector2.ZERO)
-	screen_edges.append(Vector2(get_viewport().size.x, 0))
-	screen_edges.append(Vector2(0, get_viewport().size.y))
+	screen_edges.append(0)
+	screen_edges.append(get_viewport().size.x)
+	screen_edges.append(get_viewport().size.y)
 
 
 func _on_timeout():
@@ -32,15 +32,10 @@ func _on_timeout():
 		round(rand_range(screen_edges[0], screen_edges[1])), 
 		round(rand_range(screen_edges[0], screen_edges[2]))
 	)
-	spawn_position.unit_offset = randf()
 	
-	var resource = RESOURCES[round(rand_range(0, RESOURCES.size()))]["object"].instance()
+	var resource = RESOURCES[round(rand_range(0, RESOURCES.size() - 1))]["object"].instance()
 	add_child(resource)
 	
-	resource.position = spawn_position.position
-	
-	var direction = spawn_position.rotation + PI / 2
-	direction += rand_range(-PI / 4, PI / 4)
-	resource.rotation = direction
+	resource.position = spawn_position
 	
 	AutoLoad.new_o_w_r(resource)

@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/resources/platinum_planet.png" type="Texture" id=1]
+[ext_resource path="res://assets/resources/silver_planet.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 49.5994
+radius = 50.3972
 
-[node name="Platinum" type="Node2D"]
+[node name="Silver" type="Node2D"]
 
-[node name="platinum_planet" type="Sprite" parent="."]
+[node name="silver_planet" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

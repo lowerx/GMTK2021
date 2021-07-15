@@ -47,6 +47,7 @@ limit_bottom = 10000
 [node name="SolarSystem" parent="." instance=ExtResource( 1 )]
 
 [node name="Resources" parent="." instance=ExtResource( 11 )]
+position = Vector2( -1920, -1120 )
 
 [node name="Asteroids" parent="." instance=ExtResource( 2 )]
 position = Vector2( -2026.89, -1173.45 )
