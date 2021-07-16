@@ -9,10 +9,9 @@ var _game_scene = false
 var coins = 1000
 var development_index = 0
 
-var colony = preload("res://src/Actors/Colony.tscn")
-
 var resources = {}
 var planets = []
+var colonies = []
 var prepare_colonies = []
 # o_w_r - objects with resources
 var o_w_r = []
@@ -29,22 +28,6 @@ func _process(delta):
 	elif planets.size() == 8 and start:
 		start = false
 	if _game_scene:
-		if coins >= 100:
-			for object in o_w_r:
-				if object["status"] == 'available':
-					coins -= 100
-					prepare_colonies.append({
-						"hp": 100, 
-						#"goal_position": object["object"].get_position()
-						"goal_position": Vector2(100, 100)
-					})
-					_occupate_o_w_r(object)
-					var r_colony = colony.instance()
-					get_tree().get_root().add_child(r_colony)
-					#for planet in planets:
-					#	if planet["name"] == 'Earth':
-					#		r_colony.global_position = planet["object"].global_position
-					r_colony.global_position = Vector2(0, 0)
 		coins += coins_per_fr
 
 
@@ -59,6 +42,29 @@ func get_planet(object):
 	planets.append(object)
 
 
+func check_colony():
+	for object in o_w_r:
+		if object["status"] == 'available':
+			coins -= 100
+			prepare_colonies.append({
+				"hp": 100, 
+				"goal_position": object["object"].get_position()
+			})
+			_occupate_o_w_r(object)
+			return true
+	return false
+
+
+func add_colony(colony):
+	colonies.append(colony)
+
+
+func get_Earth_position():
+	for planet in planets:
+		if planet["name"] == 'Earth':
+			return planet["object"].global_position
+
+
 func new_o_w_r(object):
 	var new = {}
 	new["object"] = object
@@ -67,7 +73,7 @@ func new_o_w_r(object):
 
 
 func _occupate_o_w_r(object):
-	o_w_r.erase(object)
+	object["status"] = 'occupied'
 
 
 func reset_values():
@@ -76,6 +82,9 @@ func reset_values():
 	prepare_colonies = []
 	coins = 1000
 	resources = {}
+	for colony in colonies:
+		colony.queue_free()
+	colonies = []
 
 
 func get_colony():

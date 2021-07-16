@@ -1,8 +1,8 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 signal damaged
 
-export (int) var speed = 100
+export (float) var speed = 0.1
 
 var hp: float
 var colony_instance = {}
@@ -14,8 +14,6 @@ func _ready():
 	colony_instance = AutoLoad.get_colony()
 	hp = colony_instance["hp"]
 	goal_position = colony_instance["goal_position"]
-	velocity = goal_position
-	self.linear_velocity = velocity
 
 
 func _physics_process(delta):
@@ -25,9 +23,36 @@ func _physics_process(delta):
 
 
 func _move_to_goal():
-	if goal_position != position:
-		velocity = goal_position
-		self.linear_velocity = velocity
+	if (goal_position.x > position.x) and (goal_position.y > position.y):
+		move_and_slide(
+			Vector2(
+				speed * goal_position.x,
+				speed * goal_position.y
+			)
+		)
+	elif (goal_position.x < position.x) and (goal_position.y < position.y):
+		move_and_slide(
+			Vector2(
+				-speed * goal_position.x,
+				-speed * goal_position.y
+			)
+		)
+	elif (goal_position.x < position.x) and (goal_position.y > position.y):
+		move_and_slide(
+			Vector2(
+				-speed * goal_position.x,
+				speed * goal_position.y
+			)
+		)
+	elif (goal_position.x > position.x) and (goal_position.y < position.y):
+		move_and_slide(
+			Vector2(
+				speed * goal_position.x,
+				-speed * goal_position.y
+			)
+		)
+	else:
+		move_and_slide(Vector2(0, 0))
 
 
 func _hp_check():
